@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app # Syncs local files with the container
+      - /app/node_modules # Prevents overwriting node_modules
+    env_file:
+      - .env
+    command: npm run dev # Run the dev server with hot reload
